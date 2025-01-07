@@ -20,7 +20,13 @@
       - Video background
       - Movies title
     - Movie recommendation section(SecondaryContainer)
-      - Movie List * n
+      - Movie List * n -> Popular
+        - cards * n 
+      - Movie List * n -> Now Playing
+        - cards * n 
+      - Movie List * n -> Top Rated
+        - cards * n 
+      - Movie List * n -> Upcoming
         - cards * n 
 
 
