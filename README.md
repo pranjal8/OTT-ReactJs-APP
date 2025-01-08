@@ -29,7 +29,15 @@
       - Movie List * n -> Upcoming
         - cards * n 
     - GPT search page
-      - Used Open AI GPT public API to recommend movies 
+      - Used Open AI GPT public API to recommend movies
+
+
+# Images:
+<img width="1440" alt="1" src="https://github.com/user-attachments/assets/1ba00f06-1e1a-42e9-8eca-6f22d36f54c4" />
+
+<img width="1440" alt="2" src="https://github.com/user-attachments/assets/9f5a59dd-688f-454c-a598-c6429b22bd01" />
+
+<img width="1440" alt="3" src="https://github.com/user-attachments/assets/ede9b37d-b2e0-4d7f-848d-e1376475b957" />
 
 
   
