@@ -28,6 +28,8 @@
         - cards * n 
       - Movie List * n -> Upcoming
         - cards * n 
+    - GPT search page
+      - Used Open AI GPT public API to recommend movies 
 
 
   

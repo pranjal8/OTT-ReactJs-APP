@@ -8,10 +8,14 @@ import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { SUPPORTED_LANGUAGES } from "../utils/constants";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,12 +51,43 @@ const Header = () => {
       });
   };
 
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div className="flex justify-between w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-10">
       <img className="w-36" src={logo} alt="logo" />
       {user && (
         <div className="p-2 flex align-middle">
-          <img className="w-12 h-12 rounded-full mr-2 " src={user?.photoURL ? user?.photoURL : avatar } alt="userIcon" />
+          {showGptSearch && (
+            <select
+              onChange={handleLanguageChange}
+              className="p-2 m-2 bg-gray-900 text-white"
+            >
+              {SUPPORTED_LANGUAGES.map((item) => (
+                <option key={item.identifier} value={item.identifier}>
+                  {" "}
+                  {item.name}{" "}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            onClick={handleGptSearchClick}
+            className="text-white py-2 px-4 mx-4 my-2 bg-purple-800 rounded-lg "
+          >
+            {!showGptSearch ? "GPT Search" : "Home Page"}{" "}
+          </button>
+          <img
+            className="w-12 h-12 rounded-full mr-2 "
+            src={user?.photoURL ? user?.photoURL : avatar}
+            alt="userIcon"
+          />
           <button onClick={handleSignOut} className=" font-bold text-white ">
             Sign Out
           </button>
